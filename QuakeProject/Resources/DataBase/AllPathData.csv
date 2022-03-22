@@ -1,0 +1,5 @@
+key,path
+Stage,Resources/DataBase/StageDatas.csv
+Player,Resources/DataBase/PlayerDatas.csv
+Sound,Resources/DataBase/SoundDatas.csv
+Cater,Resources/DataBase/CaterpillarDatas.csv

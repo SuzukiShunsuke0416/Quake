@@ -1,0 +1,7 @@
+プログラム同期用パス名,ボリューム(0.0~1.0),ファイルパス
+Master,0,Resources/Sound/
+TStoPS,0.5,Open_00.wav
+Jump,0.5,test.wav
+Landing0,0.08,Landing_00.wav
+playBGM,0.07,PlaySceneBGMprot.wav
+titleBGM,0.1,TitleSceneBGMprot.wav

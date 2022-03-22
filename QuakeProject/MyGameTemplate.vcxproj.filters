@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>e8cff5d2-4e78-4780-885b-c6fab1cff4b4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>0929ea95-4287-46b4-949f-7a24b248dfa5</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dds;dlg;fbx;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{8027572b-5197-4a91-97cc-3b48fe73127c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Librarys">
+      <UniqueIdentifier>{f522abf8-1a1f-436f-96b0-1c45c2a77b69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UtilityManager">
+      <UniqueIdentifier>{18db3535-9d79-43a7-ab64-af3043f16d2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene">
+      <UniqueIdentifier>{99d5a594-baa6-44fc-841b-9bb5d5196896}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Shader">
+      <UniqueIdentifier>{f1b69c8a-80e0-46e4-a1f3-62b5c0423b3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Camera">
+      <UniqueIdentifier>{33dcfe5a-fa90-4252-ac14-20def4783933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Actor">
+      <UniqueIdentifier>{a6379ab5-4ca8-45a0-bb38-194d8783ef08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Component">
+      <UniqueIdentifier>{0e43d7a3-cdba-4534-9613-d55e47201b7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Collision">
+      <UniqueIdentifier>{05a7229a-4750-421a-a58c-f0d2b21db527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Stage">
+      <UniqueIdentifier>{c48a3279-61c4-479c-a93b-b3ead41d23eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\DataBase">
+      <UniqueIdentifier>{bd5949f3-a25c-4230-8ca5-8dbb499671a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Character">
+      <UniqueIdentifier>{169f4b72-86f2-48a7-8495-7a34d8f34189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ElevationColor">
+      <UniqueIdentifier>{c8893e1d-2bfb-433f-8ae3-fdad2dcbac78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Character\Player">
+      <UniqueIdentifier>{c87588d5-f848-4329-90b4-c29b6019a08f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Character\State">
+      <UniqueIdentifier>{090acffb-ee36-4002-af44-98fff1e52b7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Sound">
+      <UniqueIdentifier>{42dc265c-6392-4cb5-92ce-e2f7d71993df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ScreenEffect">
+      <UniqueIdentifier>{54a4b75b-bdbd-445a-8e6f-88e6602c1123}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="StepTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\MyLibraries\EasingLibrary.h">
+      <Filter>Librarys</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\MyLibraries\GridFloor.h">
+      <Filter>Librarys</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\MyLibraries\Utility.h">
+      <Filter>Librarys</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UtilityManager\DebugLogManager.h">
+      <Filter>Game\UtilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UtilityManager\DebugObjManager.h">
+      <Filter>Game\UtilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UtilityManager\ResourceManager.h">
+      <Filter>Game\UtilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UtilityManager\SingletonFounder.h">
+      <Filter>Game\UtilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\SceneManager.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\IScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\TitleScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\PlayScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UtilityManager\DebugImgManager.h">
+      <Filter>Game\UtilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Shader\BinaryFile.h">
+      <Filter>Game\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\SceneChangeFader.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UtilityManager\InputManager.h">
+      <Filter>Game\UtilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Camera\Camera.h">
+      <Filter>Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Camera\DebugCamera.h">
+      <Filter>Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Actor\Actor.h">
+      <Filter>Game\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\MyLibraries\Transform.h">
+      <Filter>Librarys</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Component\Component.h">
+      <Filter>Game\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Camera\MyCamera.h">
+      <Filter>Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Camera\ControlCamera.h">
+      <Filter>Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Camera\MovieCamera.h">
+      <Filter>Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Camera\CameraManager.h">
+      <Filter>Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Component\ComponentManager.h">
+      <Filter>Game\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Collision\Collision.h">
+      <Filter>Game\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Collision\CollisionManager.h">
+      <Filter>Game\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Stage\StagePoint.h">
+      <Filter>Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Stage\StageTriangle.h">
+      <Filter>Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Stage\StageManager.h">
+      <Filter>Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\DataBase\ExternalDatabase.h">
+      <Filter>Game\DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\CharacterManager.h">
+      <Filter>Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\CharacterActor.h">
+      <Filter>Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ElevationColor\ElevationColorManager.h">
+      <Filter>Game\ElevationColor</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ElevationColor\ElevationColor.h">
+      <Filter>Game\ElevationColor</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\MyLibraries\MyVertexTypes.h">
+      <Filter>Librarys</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\Player\Player.h">
+      <Filter>Game\Character\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Collision\SimpleCheckFunctions.h">
+      <Filter>Game\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Stage\StageTriangleManager.h">
+      <Filter>Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\MyLibraries\PerlinNoise.h">
+      <Filter>Librarys</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\State\CharacterStateBase.h">
+      <Filter>Game\Character\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\State\Player_MoveState.h">
+      <Filter>Game\Character\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\Player\PlayerVisual.h">
+      <Filter>Game\Character\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Sound\SoundManager.h">
+      <Filter>Game\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ScreenEffect\BrightChanger.h">
+      <Filter>Game\ScreenEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ScreenEffect\ScreenEffectDatas.h">
+      <Filter>Game\ScreenEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Shader\ShaderDatas.h">
+      <Filter>Game\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Actor\DebugActor.h">
+      <Filter>Game\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\DataBase\ConstDataBase.h">
+      <Filter>Game\DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ScreenEffect\AfterGlow.h">
+      <Filter>Game\ScreenEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ScreenEffect\ScreenEffectBase.h">
+      <Filter>Game\ScreenEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\CharacterVisual.h">
+      <Filter>Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\Player\Caterpillar.h">
+      <Filter>Game\Character\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\Player\CaterpillarShaft.h">
+      <Filter>Game\Character\Player</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="DeviceResources.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\MyLibraries\GridFloor.cpp">
+      <Filter>Librarys</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\MyLibraries\Utility.cpp">
+      <Filter>Librarys</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UtilityManager\DebugLogManager.cpp">
+      <Filter>Game\UtilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UtilityManager\DebugObjManager.cpp">
+      <Filter>Game\UtilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\SceneManager.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\TitleScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\PlayScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UtilityManager\DebugImgManager.cpp">
+      <Filter>Game\UtilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Shader\BinaryFile.cpp">
+      <Filter>Game\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UtilityManager\InputManager.cpp">
+      <Filter>Game\UtilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Camera\Camera.cpp">
+      <Filter>Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Camera\DebugCamera.cpp">
+      <Filter>Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\SceneChangeFader.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\MyLibraries\Transform.cpp">
+      <Filter>Librarys</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Camera\ControlCamera.cpp">
+      <Filter>Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Camera\MovieCamera.cpp">
+      <Filter>Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Camera\MyCamera.cpp">
+      <Filter>Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Collision\Collision.cpp">
+      <Filter>Game\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Camera\CameraManager.cpp">
+      <Filter>Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Actor\Actor.cpp">
+      <Filter>Game\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Collision\CollisionManager.cpp">
+      <Filter>Game\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Stage\StagePoint.cpp">
+      <Filter>Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Stage\StageTriangle.cpp">
+      <Filter>Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\DataBase\ExternalDatabase.cpp">
+      <Filter>Game\DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Stage\StageManager.cpp">
+      <Filter>Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\Player\Player.cpp">
+      <Filter>Game\Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ElevationColor\ElevationColor.cpp">
+      <Filter>Game\ElevationColor</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ElevationColor\ElevationColorManager.cpp">
+      <Filter>Game\ElevationColor</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\MyLibraries\PerlinNoise.cpp">
+      <Filter>Librarys</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Component\Component.cpp">
+      <Filter>Game\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Stage\StageTriangleManager.cpp">
+      <Filter>Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\CharacterManager.cpp">
+      <Filter>Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\State\Player_MoveState.cpp">
+      <Filter>Game\Character\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\CharacterActor.cpp">
+      <Filter>Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\Player\PlayerVisual.cpp">
+      <Filter>Game\Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Sound\SoundManager.cpp">
+      <Filter>Game\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ScreenEffect\ScreenEffectDatas.cpp">
+      <Filter>Game\ScreenEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ScreenEffect\BrightChanger.cpp">
+      <Filter>Game\ScreenEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Shader\ShaderDatas.cpp">
+      <Filter>Game\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Actor\DebugActor.cpp">
+      <Filter>Game\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ScreenEffect\AfterGlow.cpp" />
+    <ClCompile Include="Game\ScreenEffect\ScreenEffectBase.cpp">
+      <Filter>Game\ScreenEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\Player\Caterpillar.cpp">
+      <Filter>Game\Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\Player\CaterpillarShaft.cpp">
+      <Filter>Game\Character\Player</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="directx.ico">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="settings.manifest">
+      <Filter>Assets</Filter>
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Game\Shader\Particle.hlsli">
+      <Filter>Game\Shader</Filter>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Game\Shader\ParticleGS.hlsl">
+      <Filter>Game\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shader\ParticlePS.hlsl">
+      <Filter>Game\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shader\ParticleVS.hlsl">
+      <Filter>Game\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shader\BrightPS.hlsl">
+      <Filter>Game\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shader\LuminancePS.hlsl">
+      <Filter>Game\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shader\BrightLitePS.hlsl">
+      <Filter>Game\Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
