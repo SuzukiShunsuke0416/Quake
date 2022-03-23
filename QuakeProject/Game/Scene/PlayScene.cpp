@@ -16,6 +16,7 @@
 #include "Game/Stage/StageManager.h"
 #include "Game/Character/CharacterManager.h"
 #include "Game/Collision/CollisionManager.h"
+#include "Game/UtilityManager/AutoDriveManager.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
@@ -45,6 +46,9 @@ PlayScene::PlayScene()
 	// コリマネの生成
 	mpCollisionManager = CollisionManager::GetInstance();
 
+	// 自動走行マネの生成
+	mpAutoDriveManager = AutoDriveManager::GetInstance();
+
 	// シーン内BGM開始
 	SoundManager::GetInstance()->PlaySoundFadeIn(eSoundType::PlaySceneBGM, true);
 }
@@ -56,6 +60,7 @@ PlayScene::~PlayScene()
 {
 	mpColorManager->SingletonKill();
 	mpCharacterManager->SingletonKill();
+	mpAutoDriveManager->SingletonKill();
 	mpCameraManager->SingletonKill();
 	mpStageManager->SingletonKill();
 	mpCollisionManager->SingletonKill();
@@ -79,6 +84,9 @@ void PlayScene::Initialize()
 
 	// 色マネージャの初期化
 	mpColorManager->Initialize();
+
+	// 自動走行マネの初期化
+	mpAutoDriveManager->Initialize();
 }
 
 //=====================================================
@@ -103,6 +111,9 @@ void PlayScene::Update()
 
 	// コリマネの更新
 	mpCollisionManager->Update();
+
+	// 自動走行マネの更新
+	mpAutoDriveManager->Update();
 
 	const auto& keytrack = InputManager::GetInstance()->GetKeyboardTracker();
 	if (keytrack.IsKeyPressed(DirectX::Keyboard::Keys::Q)) {
@@ -132,6 +143,9 @@ void PlayScene::Render()
 
 	//キャラクターマネージャの描画
 	mpCharacterManager->Render();
+
+	// 自動走行マネの描画
+	mpAutoDriveManager->Render();
 
 	// デバッグオブジェの描画
 	mDebugActor.Render(); // ステージの後に呼ぶとステージ線が隠れる

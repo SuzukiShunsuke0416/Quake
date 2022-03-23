@@ -98,11 +98,11 @@ public:
 template<typename MemberType>
 inline void ComponentManager<MemberType>::AddMember(MemberType* pAddMem)
 {
-	// 配列から除外する
+	// 配列へ追加する
 	mpMembers.push_back(pAddMem);
-	// 配列（ID検索用）から除外する
+	// 配列（ID検索用）へ追加する
 	mpMembersForSearch[pAddMem->GetID()] = pAddMem;
-	// 配列（ID）から除外する
+	// 配列（ID）へ追加する
 	mpMembersKeys.push_back(pAddMem->GetID());
 
 	// 配列（ID）を昇順に並び替える

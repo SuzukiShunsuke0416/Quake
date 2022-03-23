@@ -41,12 +41,11 @@ void DebugCamera::Update()
 	mPrevX = state.x;
 	mPrevY = state.y;
 
-	// マウスホイールのスクロール値を取得
+	// ホイール回転量を設定
 	mScrollWheelValue = state.scrollWheelValue;
-	if (mScrollWheelValue > 0)
-	{
+	//追記
+	if (mScrollWheelValue > 0) {
 		mScrollWheelValue = 0;
-		DirectX::Mouse::Get().ResetScrollWheelValue();
 	}
 
 	// ビュー行列の算出
@@ -94,7 +93,7 @@ void DebugCamera::CalculateViewMatrix()
 	Vector3     up(0.0f, 1.0f, 0.0f);
 
 	eye = Vector3::Transform(eye, rt.Invert());
-	eye *= (DEFAULT_CAMERA_DISTANCE - mScrollWheelValue / 100);
+	eye *= (DEFAULT_CAMERA_DISTANCE - mScrollWheelValue / 100.0f);
 	up = Vector3::Transform(up, rt.Invert());
 
 	SetEyePosition(eye);

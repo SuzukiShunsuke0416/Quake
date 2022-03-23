@@ -65,4 +65,21 @@ private:
 	* @brief キャラクターと地面
 	*/
 	void Character_vs_Floor(Collision* pCol);
+
+
+public:// 各クラスが直で呼び出す関数たち。
+
+	/**
+	 * @brief	地面と直線がどこでぶつかっているか判定する
+	 * @param[in] start		線の始点
+	 * @param[in] end		線の終点
+	 * @param[out] hitPos	接地点
+	 * @param[in] rect		調べるステージの範囲（要素番号）
+	 */
+	static void Ground_vs_Ray(
+		const DirectX::SimpleMath::Vector3& start,
+		const DirectX::SimpleMath::Vector3& end,
+		DirectX::SimpleMath::Vector3& hitPos,
+		RECT* pRect = nullptr
+	);
 };

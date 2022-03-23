@@ -17,14 +17,19 @@ using namespace DirectX::SimpleMath;
 DebugObjManager::DebugObjManager()
 	:mSphereDataVec()
 	,mCubeDataVec()
+	,mTeaPotDataVec()
+	,mLineDataVec()
 	,mGeoPri()
 	,mGeoPriCube()
+	,mGeoPriTeaPot()
+	,mpPriLine()
 {
 	DX::DeviceResources* pDR = DX::DeviceResources::GetInstance();
 	auto context = pDR->GetD3DDeviceContext();
 	mGeoPri = GeometricPrimitive::CreateGeoSphere(context);
 	mGeoPriCube = GeometricPrimitive::CreateCube(context);
 	mGeoPriTeaPot = GeometricPrimitive::CreateTeapot(context);
+	mpPriLine = std::make_unique<DataForPrimitiveBatchRender<DirectX::VertexPositionColor>>();
 }
 
 //=====================================================
@@ -63,6 +68,23 @@ void DebugObjManager::Render(
 			proj,
 			Vector4(data.color.x, data.color.y, data.color.z, 1.0f)
 		);
+	}
+
+	//　ベーシックエフェクト適応
+	mpPriLine->BasicEffectApply(view, proj);
+
+	auto& priBatch = mpPriLine->primitiveBatch;
+
+	for (const DebugObjData_Line& data : mLineDataVec) {
+		// プリミティブバッチ描画開始
+		priBatch->Begin();
+		// 線描画
+		priBatch->DrawLine(
+			VertexPositionColor(data.StartPos,data.StartColor),
+			VertexPositionColor(data.EndPos,data.EndColor)
+		);
+		// プリミティブバッチ描画終了
+		priBatch->End();
 	}
 
 	// 配列を空に

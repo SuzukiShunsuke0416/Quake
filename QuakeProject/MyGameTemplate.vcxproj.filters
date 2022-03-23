@@ -231,6 +231,15 @@
     <ClInclude Include="Game\Character\Player\CaterpillarShaft.h">
       <Filter>Game\Character\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Game\UtilityManager\AutoDriveManager.h">
+      <Filter>Game\UtilityManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Camera\SatelliteCamera.h">
+      <Filter>Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\MyLibraries\ScreenToWorld.h">
+      <Filter>Librarys</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -369,6 +378,10 @@
     <ClCompile Include="Game\Character\Player\CaterpillarShaft.cpp">
       <Filter>Game\Character\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Game\UtilityManager\AutoDriveManager.cpp">
+      <Filter>Game\UtilityManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Camera\SatelliteCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

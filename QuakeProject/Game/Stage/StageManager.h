@@ -151,4 +151,15 @@ public:
 	 * @brief	ステージの端座標の取得
 	 */
 	inline const BoxParam<float>& GetSidePosBox() { return mStageSidePosBox; }
+	
+	/**
+	 * @brief	全ステージポイントの取得
+	 */
+	inline const std::vector<std::vector<StagePoint*>>& GetAllStagePoints() 
+	{ return mpStagePoints; }
+
+	/**
+	 * @brief	ステージサイズ（要素数）の取得
+	 */
+	inline Int2 GetStageSize() { return mStageSise; }
 };

@@ -16,6 +16,7 @@ class CameraManager;
 class ElevationColorManager;
 class CharacterManager;
 class CollisionManager;
+class AutoDriveManager;
 
 /**
 * @brief プレイシーン
@@ -42,6 +43,9 @@ private:
 
 	// デバッグ用
 	DebugActor mDebugActor;
+
+	/** 自動走行マネージャ */
+	AutoDriveManager* mpAutoDriveManager;
 public:
 	/**
 	 * コンストラクタ

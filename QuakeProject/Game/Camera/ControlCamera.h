@@ -64,8 +64,7 @@ private:
 * @note CameraManagerのみ使用可能
 */
 struct ControlCameraMaker {
-	friend CameraManager;
-	// (CameraManagerのみアクセス可能)
+	friend CameraManager;// CameraManagerのみアクセス可能
 private:
 	/**
 	 * @brief	コントロールカメラを生成

@@ -173,3 +173,93 @@ void CollisionManager::Character_vs_Floor(Collision* pCol)
 	// 着地フラグをonにする
 	pCharacter->SetOnTheGroundFlag(true);
 }
+
+//=====================================================
+//		 全地面　対　直線
+//=====================================================
+void CollisionManager::Ground_vs_Ray(const Vector3& start, const Vector3& end, Vector3& hitPos, RECT* pRect)
+{
+	auto& stageData = StageManager::GetInstance()->GetAllStagePoints();
+	Int2 stageSize = StageManager::GetInstance()->GetStageSize();
+
+	RECT stageEle = RECT();
+	stageEle.left = 0;
+	stageEle.top = 0;
+	stageEle.right = stageSize.x;
+	stageEle.bottom = stageSize.y;
+
+	if (pRect != nullptr) {
+		stageEle = *pRect;
+	}
+
+	// 調べる四点の座標を入れる変数
+	Vector3 spLeftUp;
+	Vector3 spRightUp;
+	Vector3 spRightDown;
+	Vector3 spLeftDown;
+
+	// 当たった座標を保存する
+	Vector3 hitPosHoz;
+
+	// 線と面の交点を算出
+	auto check = [&](const Vector3& a, const Vector3& b, const Vector3& c) {
+		Vector3 normal = (a - b).Cross(c - b);
+		normal.Normalize();
+
+		Vector3 disB2S = start - b;
+		Vector3 disB2E = end - b;
+
+		float lenB2S = fabsf(disB2S.Dot(normal));
+		float lenB2E = fabsf(disB2E.Dot(normal));
+
+		float lenRat2start = lenB2S / (lenB2S + lenB2E);
+
+		hitPosHoz = (end - start) * lenRat2start + start;
+
+		//----------------------------------------------
+		const Vector3& h = hitPosHoz;
+
+		bool crossAB = (b - a).Cross(h - a).y > 0.0f;
+		bool crossBC = (c - b).Cross(h - b).y > 0.0f;
+		bool crossCA = (a - c).Cross(h - c).y > 0.0f;
+
+		return 
+			(crossAB == true && crossBC == true && crossCA == true) || 
+			(crossAB == false && crossBC == false && crossCA == false);
+	};
+
+	bool clearFlag = false;
+
+	// 指定範囲内のステージポイントを全走査
+	for (int y = stageEle.top; y+1 < stageEle.bottom; y++){
+		for (int x = stageEle.left; x+1 < stageEle.right; x++) 
+		{
+			// 今回の四点を洗い出し
+			spLeftUp =		stageData[y][x]->GetTransform().Location;
+			spRightUp =		stageData[y][x+1]->GetTransform().Location;
+			spRightDown =	stageData[y+1][x+1]->GetTransform().Location;
+			spLeftDown =	stageData[y+1][x]->GetTransform().Location;
+
+			/*
+				まずは	●●
+						　●　の判定
+			*/
+			clearFlag = check(spLeftUp, spRightUp, spRightDown);
+
+			if (clearFlag) {
+				hitPos = hitPosHoz;
+				return;
+			}
+
+			/*
+				つぎは	●
+						●●　の判定
+			*/
+			clearFlag = check(spLeftUp, spLeftDown, spRightDown);
+			if (clearFlag) {
+				hitPos = hitPosHoz;
+				return;
+			}
+		}
+	}
+}

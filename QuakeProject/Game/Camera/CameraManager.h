@@ -39,7 +39,7 @@ private:
 	/** デバッグカメラ */
 	std::unique_ptr<DebugCamera> mpDebugCamera;
 
-	/** コントロールカメラ（プレイヤーの数分だけ生成される） */
+	/** コントロールカメラ */
 	ControlCamera* mpControlCamera;
 
 public:
@@ -62,6 +62,14 @@ public:
 	 * @return SplitDataType カメラのポインタ
 	 */
 	ControlCamera* SpawnControlCamera(Actor* pOwner);
+
+	/**
+	 * @brief	アクティブカメラを変更する
+	 * @param[in] id	変更するカメラのコンポーネントID
+	 */
+	inline void ChangeActiveCamera(int id) {
+		mpActiveCamera = this->GetMemberFromID(id);
+	}
 
 public:
 	/**

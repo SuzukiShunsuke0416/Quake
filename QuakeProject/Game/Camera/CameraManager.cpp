@@ -51,7 +51,7 @@ ControlCamera* CameraManager::SpawnControlCamera(Actor* pOwner)
 	mpControlCamera = ControlCameraMaker::SpawnNewControlCamera(pOwner);
 
 	// Šˆ“®ƒJƒƒ‰‚ð•ÏX
-	mpActiveCamera = mpControlCamera;
+	this->ChangeActiveCamera(mpControlCamera->GetID());
 
 	return mpControlCamera;
 }

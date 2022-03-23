@@ -9,6 +9,7 @@
 #include <vector>
 #include <GeometricPrimitive.h>
 #include <SimpleMath.h>
+#include "Libraries/MyLibraries/MyVertexTypes.h"
 
 /**
  * @brief 3Dオブジェクトを描画する専用のマネージャー
@@ -19,7 +20,7 @@ public:
 
 private:
 	/**
-	 * @brief デバッグオブジェ（スフィア）用のデータ群
+	 * @brief スフィア用のデータ群
 	 */
 	struct DebugObjData_Sphere {
 		DirectX::SimpleMath::Vector3 pos;
@@ -28,7 +29,7 @@ private:
 	};
 
 	/**
-	 * @brief デバッグオブジェ（キューブ）用のデータ群
+	 * @brief キューブ用のデータ群
 	 */
 	struct DebugObjData_Cube {
 		DirectX::SimpleMath::Matrix world;
@@ -36,17 +37,29 @@ private:
 	};
 
 	/**
-	 * @brief  デバッグオブジェ（ティーポット）用のデータ群（別名定義）
+	 * @brief  ティーポット用のデータ群（別名定義）
 	 */
 	using DebugObjData_TeaPot = DebugObjData_Cube;
 
+	/**
+	 * @brief ライン用のデータ群
+	 */
+	struct DebugObjData_Line {
+		DirectX::SimpleMath::Vector3 StartPos;
+		DirectX::SimpleMath::Vector3 EndPos;
+		DirectX::SimpleMath::Vector4 StartColor;
+		DirectX::SimpleMath::Vector4 EndColor;
+	};
 
-	/** デバッグ描画データ（スフィア）用配列 */
+
+	/** スフィア描画データ用配列 */
 	std::vector<DebugObjData_Sphere> mSphereDataVec;
-	/** デバッグ描画データ（キューブ）用配列 */
+	/** キューブ描画データ用配列 */
 	std::vector<DebugObjData_Cube> mCubeDataVec;
-	/** デバッグ描画データ（ティーポット）用配列 */
+	/** ティーポット描画データ用配列 */
 	std::vector<DebugObjData_TeaPot> mTeaPotDataVec;
+	/** ライン描画データ用配列 */
+	std::vector<DebugObjData_Line> mLineDataVec;
 
 	/** ジオメトリックプリミティブ（スフィア用） */
 	std::unique_ptr<DirectX::GeometricPrimitive> mGeoPri;
@@ -54,6 +67,10 @@ private:
 	std::unique_ptr<DirectX::GeometricPrimitive> mGeoPriCube;
 	/** ジオメトリックプリミティブ（ティーポット用） */
 	std::unique_ptr<DirectX::GeometricPrimitive> mGeoPriTeaPot;
+	/** プリミティブバッチ（ライン用） */
+	std::unique_ptr<DataForPrimitiveBatchRender<DirectX::VertexPositionColor>>
+		mpPriLine;
+
 private:
 	/**
 	* @brief コンストラクタ
@@ -112,6 +129,22 @@ public:
 		mTeaPotDataVec.push_back({ world,color });
 	}
 
+	/**
+	 * @brief	描画申請（ライン）
+	 * @param[in]	startPos	始点
+	 * @param[in]	endPos		終点
+	 * @param[in]	startColor	始点色
+	 * @param[in]	endColor	終点色
+	 */
+	inline void EntryLine(
+		const DirectX::SimpleMath::Vector3& startPos,
+		const DirectX::SimpleMath::Vector3& endPos,
+		const DirectX::SimpleMath::Vector4& startColor = DirectX::SimpleMath::Vector4(1.0f, 0.0f, 0.0f, 1.0f),
+		const DirectX::SimpleMath::Vector4& endColor = DirectX::SimpleMath::Vector4(0.0f, 0.0f, 1.0f,1.0f)) 
+	{
+		mLineDataVec.push_back({ startPos,endPos,startColor,endColor });
+	}
+
 private:
 
 	/**
@@ -121,5 +154,6 @@ private:
 		mSphereDataVec.clear();
 		mCubeDataVec.clear();
 		mTeaPotDataVec.clear();
+		mLineDataVec.clear();
 	}
 };

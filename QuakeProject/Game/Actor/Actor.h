@@ -56,9 +56,7 @@ public:
 	 * @brief コンポーネントの追加
 	 * @param[in] Component*（newされた物のみ）
 	 * @return コンポーネントID
-	 * @note 使用方法
-	 * @note ①ComponentManager::CreateComponent経由で呼び出す。
-	 * @note ②引数に new Component する。(コンポーネントによってはできない物もあり)
+	 * @note Componentクラスから呼ぶので、他のクラスは呼ばない。
 	 */
 	int AddComponent(Component* pComponent);
 
