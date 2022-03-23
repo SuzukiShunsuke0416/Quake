@@ -119,7 +119,7 @@ void SceneManager::Render()
 
 	//デバッグ表示の描画
 	DebugImgManager::GetInstance()->Draw();
-	//DebugLogManager::GetInstance()->Draw();
+	DebugLogManager::GetInstance()->Draw();
 }
 
 //=====================================================

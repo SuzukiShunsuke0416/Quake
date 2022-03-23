@@ -3,7 +3,7 @@
 #include "ControlCamera.h"
 #include "Camera.h"
 
-#define DEBUG_MODE
+//#define DEBUG_MODE
 
 //=====================================================
 //		コンストラクタ
