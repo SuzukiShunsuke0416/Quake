@@ -59,6 +59,9 @@
     <Filter Include="Game\ScreenEffect">
       <UniqueIdentifier>{54a4b75b-bdbd-445a-8e6f-88e6602c1123}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\AutoDrive">
+      <UniqueIdentifier>{d32fb64f-1bb3-4d9a-8454-cf74ce3af898}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -231,14 +234,26 @@
     <ClInclude Include="Game\Character\Player\CaterpillarShaft.h">
       <Filter>Game\Character\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Game\UtilityManager\AutoDriveManager.h">
-      <Filter>Game\UtilityManager</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Camera\SatelliteCamera.h">
       <Filter>Game\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\MyLibraries\ScreenToWorld.h">
       <Filter>Librarys</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\AutoDrive\AutoDriveManager.h">
+      <Filter>Game\AutoDrive</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\AutoDrive\AutoDrivePointObject.h">
+      <Filter>Game\AutoDrive</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\AutoDrive\AutoDrivePointStinger.h">
+      <Filter>Game\AutoDrive</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\State\Player_AutoRunState.h">
+      <Filter>Game\Character\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UtilityManager\MemberManager.h">
+      <Filter>Game\UtilityManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -378,10 +393,19 @@
     <ClCompile Include="Game\Character\Player\CaterpillarShaft.cpp">
       <Filter>Game\Character\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Game\UtilityManager\AutoDriveManager.cpp">
-      <Filter>Game\UtilityManager</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Camera\SatelliteCamera.cpp" />
+    <ClCompile Include="Game\AutoDrive\AutoDriveManager.cpp">
+      <Filter>Game\AutoDrive</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\AutoDrive\AutoDrivePointStinger.cpp">
+      <Filter>Game\AutoDrive</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\State\Player_AutoRunState.cpp">
+      <Filter>Game\Character\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\AutoDrive\AutoDrivePointObject.cpp">
+      <Filter>Game\AutoDrive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

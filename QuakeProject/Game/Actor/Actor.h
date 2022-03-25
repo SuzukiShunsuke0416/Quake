@@ -99,7 +99,7 @@ public:
 	/**
 	* @brief アクターIDの取得
 	*/
-	inline int GetActorID() {
+	inline int GetID() {
 		return mActorID;
 	}
 public:

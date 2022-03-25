@@ -12,7 +12,7 @@
  //		コンストラクタ
  //=====================================================
 CharacterManager::CharacterManager()
-	:mpCharacters()
+	:mpPlayers()
 {
 }
 
@@ -21,7 +21,10 @@ CharacterManager::CharacterManager()
 //=====================================================
 CharacterManager::~CharacterManager()
 {
-	mpCharacters.clear();
+	for (auto& chara : mpMembers) {
+		delete chara;
+		chara = nullptr;
+	}
 }
 
 //=====================================================
@@ -30,7 +33,13 @@ CharacterManager::~CharacterManager()
 void CharacterManager::Initialize()
 {
 	// プレイヤーの生成
-	this->AddCharacter(std::make_unique<Player>());
+	mpPlayers.push_back(new Player());
+
+	// プレイヤーの登録
+	for (const auto& pla : mpPlayers) {
+		this->AddMember(pla);
+	}
+	
 }
 
 //=====================================================
@@ -39,8 +48,8 @@ void CharacterManager::Initialize()
 void CharacterManager::Update()
 {
 	// キャラクターたちの更新
-	for (const auto& chara : mpCharacters) {
-		chara.second->Update();
+	for (const auto& chara : mpMembers) {
+		chara->Update();
 	}
 }
 
@@ -50,16 +59,7 @@ void CharacterManager::Update()
 void CharacterManager::Render()
 {
 	// キャラクターたちの描画
-	for (const auto& chara : mpCharacters) {
-		chara.second->Render();
+	for (const auto& chara : mpMembers) {
+		chara->Render();
 	}
-}
-
-//=====================================================
-//		キャラの追加
-//=====================================================
-void CharacterManager::AddCharacter(std::unique_ptr<CharacterActor> character)
-{
-	int id = character->GetActorID();
-	mpCharacters[id] = std::move(character);
 }

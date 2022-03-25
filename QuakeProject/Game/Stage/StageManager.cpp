@@ -191,7 +191,7 @@ void StageManager::Render()
 
 	mpLineBatchDatas->BasicEffectApply(view, proj);
 
-	mpBright->Begin();// 発光開始
+	//mpBright->Begin();// 発光開始
 
 	for (const auto& line : mpStagePoints) {
 		for (const auto& point : line) {
@@ -199,7 +199,7 @@ void StageManager::Render()
 		}
 	}
 
-	mpBright->End();// 発光終了
+	//mpBright->End();// 発光終了
 }
 
 //=====================================================

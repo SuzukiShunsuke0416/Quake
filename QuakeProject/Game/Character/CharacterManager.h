@@ -8,19 +8,22 @@
 #include "Game/UtilityManager/SingletonFounder.h"
 #include <unordered_map>
 #include "CharacterActor.h"
+#include "Game/UtilityManager/MemberManager.h"
 
 class Player;
  /**
  * @brief キャラクター系を管理するマネージャ
  */
-class CharacterManager :public SingletonFounder<CharacterManager> {
+class CharacterManager 
+	:public SingletonFounder<CharacterManager> 
+	,public MemberManager<CharacterActor>
+{
 	friend SingletonFounder;
 
 private:
-	/** キャラクターたち（大元データ） */
-	std::unordered_map<int,std::unique_ptr<CharacterActor>> 
-		mpCharacters;
 
+	/** プレイヤーだけの配列 */
+	std::vector<Player*> mpPlayers;
 private:
 	/**
 	* @brief コンストラクタ
@@ -31,6 +34,7 @@ private:
 	* @brief デストラクタ
 	*/
 	~CharacterManager();
+
 public:
 	/**
 	* @brief 初期化
@@ -49,15 +53,10 @@ public:
 
 public:
 	/**
-	 * @brief	キャラクターの追加
-	 * @param[in] character	CharacterActorのユニークポインタ
-	 */
-	void AddCharacter(std::unique_ptr<CharacterActor> character);
-
-	/**
-	* @brief キャラクターの取得
+	* @brief 全プレイヤーの取得
 	*/
-	inline CharacterActor* GetCharacter(int id) {
-		return mpCharacters.at(id).get();
+	inline const std::vector<Player*>& GetAllPlayers() {
+		return mpPlayers;
 	}
+
 };

@@ -50,6 +50,7 @@ Player::Player()
 
 	// 全ステートを生成
 	mpMoveState = std::make_unique<Player_MoveState>(this);
+	mpAutoRunState = std::make_unique<Player_AutoRunState>(this);
 
 	// 活動ステートを設定
 	mpCurrentState = mpMoveState.get();

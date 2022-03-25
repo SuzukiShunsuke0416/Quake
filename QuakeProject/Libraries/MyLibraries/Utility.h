@@ -400,6 +400,19 @@ namespace MyFunctions {
 	constexpr float CompileTimeDivision1byFloat(const float val) {
 		return 1.0f / val;
 	}
+
+	/**
+	* @brief ＢからＡへの方向ベクトル(単位化済み)を取得
+	*/
+	inline DirectX::SimpleMath::Vector3 GetWay(
+		const DirectX::SimpleMath::Vector3& A,
+		const DirectX::SimpleMath::Vector3& B)
+	{
+		using namespace DirectX::SimpleMath;
+		Vector3 way = A - B;
+		way.Normalize();
+		return way;
+	}
 }
 
 namespace myf = MyFunctions;

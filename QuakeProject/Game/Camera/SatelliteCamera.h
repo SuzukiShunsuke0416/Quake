@@ -26,6 +26,9 @@ private:
 	/** マウスホイールの値 */
 	Save<int> mWheelValue;
 
+	/** カーソルが指している場所 */
+	DirectX::SimpleMath::Vector3 mChoosingPoint;
+
 public:
 	/**
 	* @brief コンストラクタ
@@ -45,7 +48,7 @@ public:
 	/**
 	* @brief 更新
 	*/
-	void Update();
+	void Update() override;
 
 private:
 	/**
@@ -54,14 +57,37 @@ private:
 	void CallCalculateViewMatrixFunction();
 
 	/**
-	* @brief ターゲット座標を計算する
+	* @brief カーソルが指している場所を計算する
 	*/
-	void CalculateTargetPos();
+	void CalculateChoosingPoint();
 
 	/**
 	* @brief 地面との距離差を計算する
 	*/
 	void CalculateDistance();
+
+public:
+
+	/**
+	* @brief カーソルが指している場所を取得する
+	*/
+	inline const DirectX::SimpleMath::Vector3& 
+	GetChoosingPoint() { return mChoosingPoint; }
+
+	/**
+	* @brief ターゲット座標を滑らかに変更する
+	*/
+	void SetTargetPosRubber(const DirectX::SimpleMath::Vector3& goal);
+
+	/**
+	* @brief ターゲット座標を滑らかにデフォルト値にする
+	*/
+	void SetTargetPosDefaultRubber();
+
+	/**
+	* @brief ターゲット座標をデフォルト値にする
+	*/
+	void SetTargetPosDefault();
 };
 
 
@@ -70,6 +96,8 @@ private:
 */
 class SatelliteCameraUser :public Actor {
 private:
+
+	/** サテライトカメラ */
 	SatelliteCamera* mpCamera;
 public:
 	/**
@@ -97,13 +125,21 @@ public:
 
 	/**
 	* @brief 更新
+	* @note サテライトカメラのアプデは
+			カメラマネージャが担当している
 	*/
-	inline void Update() override {
-		mpCamera->Update();
-	}
+	inline void Update() override {}
 
 	/**
 	* @brief 描画
 	*/
 	void Render() override {}
+
+public:
+	/**
+	* @brief カメラの取得
+	*/
+	inline SatelliteCamera* GetCamera() {
+		return mpCamera;
+	}
 };

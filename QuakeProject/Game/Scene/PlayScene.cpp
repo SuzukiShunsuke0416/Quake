@@ -16,7 +16,7 @@
 #include "Game/Stage/StageManager.h"
 #include "Game/Character/CharacterManager.h"
 #include "Game/Collision/CollisionManager.h"
-#include "Game/UtilityManager/AutoDriveManager.h"
+#include "Game/AutoDrive/AutoDriveManager.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;

@@ -113,7 +113,7 @@ void CollisionManager::CheckSingles(
 void CollisionManager::Character_vs_Floor(Collision* pCol)
 {
 	CharacterActor* pCharacter = CharacterManager::GetInstance()
-		->GetCharacter(pCol->GetOwner()->GetActorID());
+		->GetMemberFromID(pCol->GetOwner()->GetID());
 
 	StageTriangle* triangle = StageManager::GetInstance()
 		->GetStageTriangleManager()

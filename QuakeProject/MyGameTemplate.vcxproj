@@ -180,6 +180,9 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Game\Actor\Actor.h" />
     <ClInclude Include="Game\Actor\DebugActor.h" />
+    <ClInclude Include="Game\AutoDrive\AutoDriveManager.h" />
+    <ClInclude Include="Game\AutoDrive\AutoDrivePointObject.h" />
+    <ClInclude Include="Game\AutoDrive\AutoDrivePointStinger.h" />
     <ClInclude Include="Game\Camera\Camera.h" />
     <ClInclude Include="Game\Camera\CameraManager.h" />
     <ClInclude Include="Game\Camera\ControlCamera.h" />
@@ -195,6 +198,7 @@
     <ClInclude Include="Game\Character\Player\Player.h" />
     <ClInclude Include="Game\Character\Player\PlayerVisual.h" />
     <ClInclude Include="Game\Character\State\CharacterStateBase.h" />
+    <ClInclude Include="Game\Character\State\Player_AutoRunState.h" />
     <ClInclude Include="Game\Character\State\Player_MoveState.h" />
     <ClInclude Include="Game\Collision\Collision.h" />
     <ClInclude Include="Game\Collision\CollisionManager.h" />
@@ -221,11 +225,11 @@
     <ClInclude Include="Game\Stage\StagePoint.h" />
     <ClInclude Include="Game\Stage\StageTriangle.h" />
     <ClInclude Include="Game\Stage\StageTriangleManager.h" />
-    <ClInclude Include="Game\UtilityManager\AutoDriveManager.h" />
     <ClInclude Include="Game\UtilityManager\DebugImgManager.h" />
     <ClInclude Include="Game\UtilityManager\DebugLogManager.h" />
     <ClInclude Include="Game\UtilityManager\DebugObjManager.h" />
     <ClInclude Include="Game\UtilityManager\InputManager.h" />
+    <ClInclude Include="Game\UtilityManager\MemberManager.h" />
     <ClInclude Include="Game\UtilityManager\ResourceManager.h" />
     <ClInclude Include="Game\UtilityManager\SingletonFounder.h" />
     <ClInclude Include="Libraries\MyLibraries\EasingLibrary.h" />
@@ -243,6 +247,9 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game\Actor\Actor.cpp" />
     <ClCompile Include="Game\Actor\DebugActor.cpp" />
+    <ClCompile Include="Game\AutoDrive\AutoDriveManager.cpp" />
+    <ClCompile Include="Game\AutoDrive\AutoDrivePointObject.cpp" />
+    <ClCompile Include="Game\AutoDrive\AutoDrivePointStinger.cpp" />
     <ClCompile Include="Game\Camera\Camera.cpp" />
     <ClCompile Include="Game\Camera\CameraManager.cpp" />
     <ClCompile Include="Game\Camera\ControlCamera.cpp" />
@@ -256,6 +263,7 @@
     <ClCompile Include="Game\Character\Player\CaterpillarShaft.cpp" />
     <ClCompile Include="Game\Character\Player\Player.cpp" />
     <ClCompile Include="Game\Character\Player\PlayerVisual.cpp" />
+    <ClCompile Include="Game\Character\State\Player_AutoRunState.cpp" />
     <ClCompile Include="Game\Character\State\Player_MoveState.cpp" />
     <ClCompile Include="Game\Collision\Collision.cpp" />
     <ClCompile Include="Game\Collision\CollisionManager.cpp" />
@@ -278,7 +286,6 @@
     <ClCompile Include="Game\Stage\StagePoint.cpp" />
     <ClCompile Include="Game\Stage\StageTriangle.cpp" />
     <ClCompile Include="Game\Stage\StageTriangleManager.cpp" />
-    <ClCompile Include="Game\UtilityManager\AutoDriveManager.cpp" />
     <ClCompile Include="Game\UtilityManager\DebugImgManager.cpp" />
     <ClCompile Include="Game\UtilityManager\DebugLogManager.cpp" />
     <ClCompile Include="Game\UtilityManager\DebugObjManager.cpp" />

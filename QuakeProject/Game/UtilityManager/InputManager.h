@@ -46,14 +46,16 @@ public:
 	/**
 	 * @brief マウストラッカー取得（const参照）
 	 */
-	const DirectX::Mouse::ButtonStateTracker& GetMouseTracker() {
+	inline const DirectX::Mouse::ButtonStateTracker& 
+	GetMouseTracker() {
 		return mMouseTracker;
 	}
 
 	/**
 	 * @brief キーボードトラッカー取得（const参照）
 	 */
-	const DirectX::Keyboard::KeyboardStateTracker& GetKeyboardTracker() {
+	inline const DirectX::Keyboard::KeyboardStateTracker& 
+	GetKeyboardTracker() {
 		return mKeyboardTracker;
 	}
 };

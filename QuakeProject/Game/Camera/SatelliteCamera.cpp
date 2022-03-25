@@ -25,6 +25,7 @@ SatelliteCamera::SatelliteCamera(Actor* pOwner)
 	,mTargetPos()
 	,mEyeOriginPos()
 	,mWheelValue(0)
+	,mChoosingPoint()
 {
 }
 
@@ -33,11 +34,9 @@ SatelliteCamera::SatelliteCamera(Actor* pOwner)
 //=====================================================
 void SatelliteCamera::Initialize()
 {
-	this->SetUpVector(Vector3(0, 0, -1));
 	CameraManager::GetInstance()->ChangeActiveCamera(this->GetID());
 	
-	Vector3 centerPos = StageManager::GetInstance()->GetCenterPos();
-	mTargetPos = centerPos * Vector3(1, 0, 1);
+	this->SetTargetPosDefault();
 	mEyeOriginPos = mTargetPos + Vector3(0, 250, 0);
 
 	this->CallCalculateViewMatrixFunction();
@@ -52,7 +51,7 @@ void SatelliteCamera::Update()
 
 	this->CallCalculateViewMatrixFunction();
 
-	this->CalculateTargetPos();
+	this->CalculateChoosingPoint();
 }
 
 //=====================================================
@@ -67,22 +66,21 @@ void SatelliteCamera::CallCalculateViewMatrixFunction()
 }
 
 //=====================================================
-//		ターゲット座標を計算する
+//		カーソル指定点を計算する
 //=====================================================
-void SatelliteCamera::CalculateTargetPos()
+void SatelliteCamera::CalculateChoosingPoint()
 {
 	Vector3 startPos;
 	Vector3 endPos;
-	Vector3 hitPos;
 
 	myf::CalculateStartandEndPointsFromMousePos(startPos, endPos);
 
 	DebugLogManager::GetInstance()->EntryLog(startPos, L"start");
 	DebugLogManager::GetInstance()->EntryLog(endPos, L"end");
 
-	CollisionManager::Ground_vs_Ray(startPos, endPos, hitPos);
+	CollisionManager::Ground_vs_Ray(startPos, endPos, mChoosingPoint);
 
-	DebugObjManager::GetInstance()->Entry(hitPos, 5.0f);
+	DebugObjManager::GetInstance()->Entry(mChoosingPoint, 5.0f);
 	DebugObjManager::GetInstance()->EntryLine(startPos,endPos);
 }
 
@@ -99,4 +97,36 @@ void SatelliteCamera::CalculateDistance()
 
 	mDistanceRat = myf::Clamp(float(mWheelValue.Act) * 0.0005f, 0.99f, 0.0f);
 	DebugLogManager::GetInstance()->EntryLog(mWheelValue.Act, L"whel");
+}
+
+//=====================================================
+//		ターゲット座標を滑らかに変更する
+//=====================================================
+void SatelliteCamera::SetTargetPosRubber(const Vector3& goal)
+{
+	myf::RubberComplementSlow(mTargetPos, goal);
+	this->SetUpVector((mTargetPos - mEyeOriginPos) * Vector3(1, 0, 1));
+}
+
+//=====================================================
+//		ターゲット座標を滑らかにデフォルト値にする
+//=====================================================
+void SatelliteCamera::SetTargetPosDefaultRubber()
+{
+	Vector3 centerPos = StageManager::GetInstance()->GetCenterPos();
+	this->SetTargetPosRubber(centerPos * Vector3(1, 0, 1));
+
+	Vector3 up = this->GetUpVector();
+	myf::RubberComplementSlow(up, Vector3(0, 0, -1));
+	this->SetUpVector(up);
+}
+
+//=====================================================
+//		ターゲット座標をデフォルト値にする
+//=====================================================
+void SatelliteCamera::SetTargetPosDefault()
+{
+	Vector3 centerPos = StageManager::GetInstance()->GetCenterPos();
+	mTargetPos = centerPos * Vector3(1, 0, 1);
+	this->SetUpVector(Vector3(0, 0, -1));
 }

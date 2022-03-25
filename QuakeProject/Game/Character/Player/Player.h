@@ -9,6 +9,7 @@
 #include "../CharacterActor.h"
 #include "../State/CharacterStateBase.h"
 #include "../State/Player_MoveState.h"
+#include "../State/Player_AutoRunState.h"
 #include "PlayerVisual.h"
 
  /**
@@ -78,6 +79,8 @@ private:
 
 	/** 移動ステート */
 	std::unique_ptr<Player_MoveState> mpMoveState;
+	/** 自動走行ステート */
+	std::unique_ptr<Player_AutoRunState> mpAutoRunState;
 public:
 	/**
 	* @brief コンストラクタ
@@ -117,13 +120,22 @@ private:
 	*/
 	void LoadExternalData();
 
-private:
+public:
 	/**
 	* @brief 現ステートを「移動」に変更
 	*/
 	inline void ChangeState_Move() {
 		mpCurrentState->Finalize();
 		mpCurrentState = mpMoveState.get();
+		mpCurrentState->Reset();
+	}
+
+	/**
+	* @brief 現ステートを「自動走行」に変更
+	*/
+	inline void ChangeState_AutoRun() {
+		mpCurrentState->Finalize();
+		mpCurrentState = mpAutoRunState.get();
 		mpCurrentState->Reset();
 	}
 

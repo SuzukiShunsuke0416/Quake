@@ -28,6 +28,8 @@ extern "C"
     __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
 }
 
+static bool sIsFullScreen = true;
+
 // Entry point
 int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow)
 {
@@ -46,6 +48,16 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     HRESULT hr = CoInitializeEx(nullptr, COINITBASE_MULTITHREADED);
     if (FAILED(hr))
         return 1;
+
+    // フルスクリーン化するかどうか
+   /* if (MessageBox(nullptr, L"フルスクリーンにしますか？", L"画面モード設定", MB_YESNO) == IDYES)
+    {
+        sIsFullScreen = true;
+    }
+    else
+    {
+        sIsFullScreen = false;
+    }*/
 
     g_game = std::make_unique<Game>();
 
@@ -73,9 +85,21 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
         AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 
-        HWND hwnd = CreateWindowExW(0, L"MyGameTemplateWindowClass", L"MyGameTemplate", WS_OVERLAPPEDWINDOW,
-            CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance,
-            nullptr);
+        
+        HWND hwnd = CreateWindowExW(
+            0,
+            L"MyGameTemplateWindowClass",   // 登録されているクラス名
+            L"TankBaseBall_Quake",              // ウィンドウ名
+            WS_OVERLAPPEDWINDOW ^ (WS_THICKFRAME | WS_MAXIMIZEBOX), // ウィンドウスタイル
+            CW_USEDEFAULT,                  // ウィンドウの横方向の位置
+            CW_USEDEFAULT,                  // ウィンドウの縦方向の位置
+            rc.right - rc.left,             // ウィンドウの幅
+            rc.bottom - rc.top,             // ウィンドウの高さ
+            nullptr,                        // 親ウィンドウまたはオーナーウィンドウのハンドル
+            nullptr,                        // メニューハンドルまたは子ウィンドウ ID
+            hInstance,                      // アプリケーションインスタンスのハンドル
+            nullptr                         // ウィンドウ作成データ
+        );
 
         // TODO: Change to CreateWindowExW(WS_EX_TOPMOST, L"MyGameTemplateWindowClass", L"MyGameTemplate", WS_POPUP,
         // to default to fullscreen.
@@ -83,10 +107,21 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
         if (!hwnd)
             return 1;
 
-        ShowWindow(hwnd, SW_SHOWMAXIMIZED);
+        ShowWindow(hwnd, nCmdShow);
         // TODO: Change nCmdShow to SW_SHOWMAXIMIZED to default to fullscreen.
 
-        SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(g_game.get()) );
+        
+        if (sIsFullScreen)
+        {
+            // フルスクリーンモードに変更する
+            SetWindowLongPtr(hwnd, GWL_STYLE, 0);
+            SetWindowLongPtr(hwnd, GWL_EXSTYLE, WS_EX_TOPMOST);
+            SetWindowPos(hwnd, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+            ShowWindow(hwnd, SW_SHOWMAXIMIZED);
+        }
+        else {
+            SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(g_game.get()));
+        }
 
         GetClientRect(hwnd, &rc);
 
@@ -109,6 +144,12 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
     }
 
     g_game.reset();
+
+    if (sIsFullScreen)
+    {
+        // ウインドウモードへ戻す
+        DX::DeviceResources::GetInstance()->GetSwapChain()->SetFullscreenState(FALSE, nullptr);
+    }
 
     CoUninitialize();
 
@@ -258,7 +299,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
 
     case WM_SYSKEYDOWN:
-        if (wParam == VK_RETURN && (lParam & 0x60000000) == 0x20000000)
+        // ALT+ENTERでフルスクリーン化するシステムを消す。
+        /*if (wParam == VK_RETURN && (lParam & 0x60000000) == 0x20000000)
         {
             // Implements the classic ALT+ENTER fullscreen toggle
             if (s_fullscreen)
@@ -266,7 +308,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 SetWindowLongPtr(hWnd, GWL_STYLE, WS_OVERLAPPEDWINDOW);
                 SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0);
 
-                //ここの値は仮
                 int width = 800;
                 int height = 600;
                 if (game)
@@ -287,7 +328,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
 
             s_fullscreen = !s_fullscreen;
-        }
+        }*/
         break;
 
     case WM_MENUCHAR:
